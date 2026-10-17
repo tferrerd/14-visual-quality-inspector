@@ -2,9 +2,24 @@
 
 - **Application:** Computer vision inspection
 - **Portfolio project:** 14 of 15
-- **Status:** Project brief defined. Dataset acquisition, ML, application and MLOps implementation have not started.
+- **Status:** Source-derived CSV data is committed. ML models, the application and MLOps remain to be implemented.
 
 Part of [Tomas Ferrer's DS/ML portfolio](https://tomasferrer.com/).
+
+## Committed CSV dataset
+
+**Dataset:** MVTec AD bottle category, Voxel51 mirror
+
+**Coverage:** 60 source training-normal bottle images plus all 83 published bottle test images; original split/defect labels preserved. Full-source PNG images and available masks are included for this subset.
+
+| CSV file | Rows |
+|---|---:|
+| [bottle_index.csv](data/raw/bottle_index.csv) | 143 |
+| [bottle_grayscale32.csv](data/raw/bottle_grayscale32.csv) | 143 |
+
+These are actual published observations or documented format conversions. See [source, license and limitations](data/DATASET.md) and [CSV schemas/checksums](data/csv-manifest.json).
+
+The repository also includes 206 supporting image/mask assets referenced by the CSV data. Image-based work uses those assets; the CSV is not presented as a replacement for image content.
 
 ## Project prompt
 
@@ -20,11 +35,9 @@ Write a short project charter defining the user, current baseline, primary busin
 
 ### Published dataset and raw data
 
-A bounded subset of [MVTec AD](https://www.mvtec.com/research-teaching/datasets/mvtec-ad), subject to its research-use and display terms.
+The committed source is **MVTec AD bottle category, Voxel51 mirror**. 60 source training-normal bottle images plus all 83 published bottle test images; original split/defect labels preserved. Full-source PNG images and available masks are included for this subset. See [dataset documentation](data/DATASET.md) for original links, attribution, usage terms and limitations.
 
-**Additional source/access notes:** Start with a small set of categories. Fit the detector on the allowed normal training images; do not tune thresholds on final test labels. Inspect the provider's noncommercial/share-alike terms before publishing assets
-
-Acquire a pinned source release into `data/raw/` and preserve the original bytes. Add a repeatable acquisition script and a manifest containing source URL, release/version, retrieval time, citation, terms, file sizes and SHA-256 checksums. Keep cleaned data in `data/interim/` and model-ready features/split assignments in `data/processed/`. Raw data stay out of Git unless redistribution is explicitly appropriate.
+Acquire a pinned source release into `data/raw/` and preserve the original bytes. Add a repeatable acquisition script and a manifest containing source URL, release/version, retrieval time, citation, terms, file sizes and SHA-256 checksums. Keep cleaned data in `data/interim/` and model-ready features/split assignments in `data/processed/`. Redistributable CSV exports and the documented supporting assets are committed; large source archives remain excluded from Git.
 
 Audit labels, decision-time feature availability, duplicates, missingness, class balance, and temporal/group structure. If the candidate cannot support the task or intended use, find another suitable published dataset or narrow the question. Generated fixtures and economic scenarios are supplementary, clearly labeled artifacts.
 
@@ -75,7 +88,7 @@ Use the smallest architecture that completes this lifecycle. Select real-time or
 
 ## Completion checklist
 
-- [ ] Published source acquired, checksum verified and provenance/profile recorded.
+- [x] Published source acquired, checksum verified and provenance/profile recorded.
 - [ ] Data audit, project charter, success criteria and evaluation protocol complete.
 - [ ] Baseline and trained ML component evaluated; artifacts and failure analysis saved.
 - [ ] Working application deployed with the exact evaluated model version.
@@ -84,4 +97,4 @@ Use the smallest architecture that completes this lifecycle. Select real-time or
 
 ## Current implementation
 
-This repository currently contains the implementation brief and Git exclusions. The dataset links identify starting sources; acquisition and model results will be documented as implementation proceeds.
+Published dataset observations, CSV exports, supporting assets where applicable, and provenance/checksum documentation are present. Models, application functionality and MLOps have not been implemented or evaluated yet.
